@@ -19,6 +19,10 @@ services:
   db:
     image: mariadb
     restart: always
+    networks:
+      - golang 
+    volumes: 
+      - $DATA_BACKUP_DIR:/var/lib/mysqld
     environment:
       MARIADB_ROOT_PASSWORD: $DB_PASS
 
