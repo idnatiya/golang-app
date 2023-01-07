@@ -24,15 +24,7 @@ func Register(c *gin.Context) {
 
 	authService := services.AuthServiceImpl{}
 
-	user, err := authService.GetUserByEmail(&registerType.Email)
-
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"status":  "error",
-			"message": err.Error(),
-		})
-		return
-	}
+	user, _ := authService.GetUserByEmail(&registerType.Email)
 
 	if user != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
