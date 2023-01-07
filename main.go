@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"idnatiya.com/golang-app/cmd/models"
@@ -20,5 +22,5 @@ func main() {
 	// init to connect database
 	models.ConnectDatabase()
 	// serve application
-	route.Run(":3000")
+	route.Run(":" + os.Getenv("APP_PORT"))
 }
