@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  app: 
+    env_file:
+      - .env 
+    build: 
+      context: ./
+      dockerfile: Dockerfile 
+    image: golang-app 
+    restart: unless-stopped
+    working_dir: /app 
+    ports:
+      - $EXPOSE_PORT:$APP_PORT 
+    networks:
+      - golang
+    extra_hosts: 
+      - "host.docker.internal:host-gateway"
+
+networks:
+  golang: 
+    driver: bridge 
