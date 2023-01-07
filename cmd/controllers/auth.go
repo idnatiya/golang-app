@@ -34,7 +34,7 @@ func Register(c *gin.Context) {
 		return
 	}
 
-	user, err = authService.Register(&registerType)
+	user, err := authService.Register(&registerType)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"status":  "error",
