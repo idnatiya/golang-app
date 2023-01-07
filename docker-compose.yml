@@ -16,6 +16,11 @@ services:
       - golang
     extra_hosts: 
       - "host.docker.internal:host-gateway"
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: $DB_PASS
 
 networks:
   golang: 
