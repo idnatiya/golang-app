@@ -9,6 +9,8 @@ import (
 func DefineWebRoutes(routes *gin.Engine) {
 	rg := routes.Group("/api/1.0")
 	{
+		rg.Use(middleware.CORSMiddleware())
+
 		auth := rg.Group("/auth")
 		{
 			auth.POST("/register", controllers.Register)
