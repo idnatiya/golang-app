@@ -17,4 +17,10 @@ func DefineSuperadminRoutes(routes *gin.Engine) {
 		permissionRouteGroup.PUT("/:permissionID", controllers.UpdatePermission)
 		permissionRouteGroup.DELETE("/:permissionID", controllers.DeletePermission)
 	}
+
+	roleRouteGroup := adminRoute.Group("role")
+	{
+		roleRouteGroup.GET("/", controllers.ListRole)
+		roleRouteGroup.POST("/", controllers.CreateRole)
+	}
 }
